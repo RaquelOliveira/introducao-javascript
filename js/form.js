@@ -14,7 +14,7 @@ botaoAdicionar.addEventListener("click", function(){
 
 function obterPacienteDoFormulario (form){
 
-    let paciente = {
+    const paciente = {
         nome : form.nome.value,
         peso : form.peso.value,
         altura : form.altura.value,
