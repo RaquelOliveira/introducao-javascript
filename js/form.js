@@ -5,12 +5,27 @@ botaoAdicionar.addEventListener("click", function(){
     let form = document.querySelector("#form-adiciona");
     let paciente = obterPacienteDoFormulario(form);
 
-    let pacienteTr = montarTr(paciente);
+    let erros = validaPaciente(paciente);
+    console.log(erros);
 
+    if(erros.length > 0){
+        exibirMensagensDeErro(erros);
+        return;  
+    }
+
+    adicionarPacienteNaTabela(paciente);
+
+    let mensagensErro = document.querySelector("#mensagem-erro");
+    mensagensErro.innerHTML = "";
+});
+
+function adicionarPacienteNaTabela(paciente){
+    let pacienteTr = montarTr(paciente);
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
-});
+
+}
 
 function obterPacienteDoFormulario (form){
 
@@ -45,4 +60,32 @@ function montarTd (dado,classe){
     td.classList.add(classe);
 
     return td;
+}
+
+function validaPaciente(paciente){
+    let erros = [];
+
+    if(!validaPeso(paciente.peso)){
+        erros.push("Peso inválido!");
+    }
+
+    if(!validaAltura(paciente.altura)){
+        erros.push("Altura inválida!");
+    }
+
+    return erros;
+}
+
+function exibirMensagensDeErro(erros){
+
+    let ul = document.querySelector("#mensagem-erro");
+    ul.innerHTML = "";
+
+    erros.forEach(function(erro) {
+        let li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+
+    
 }

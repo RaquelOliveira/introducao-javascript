@@ -12,12 +12,14 @@
 
 		<header>
 			<div class="container">
-				<h1 class="titulo" Aparecida Nutrição</h1>
+				<h1 class="titulo" >Aparecida Nutrição</h1>
 			</div>
 		</header>
 		<main>
 			<section class="container">
 				<h2>Meus pacientes</h2>
+				<label for= filtrar-tabela>Filtre:</label>
+				<input id="filtrar-tabela" name="filtro" type="text" placeholder="Digite o nome do paciente">
 				<table>
 					<thead>
 						<tr>
@@ -69,11 +71,13 @@
 						</tr>
 					</tbody>
 				</table>
-
+				<span id="erro-ajax" class="invisivel">Erro ao  buscar pacientes!</span>
+				<button id="buscar-paciente">Buscar Paciente</button>
 			</section>
 
 			<section class="container">
 					<h2 id="titulo-form">Adicionar novo paciente</h2>
+					<ul id="mensagem-erro"></ul>
 					<form id="form-adiciona">
 						<div class="grupo">
 							<label for="nome">Nome:</label>
@@ -96,8 +100,11 @@
 					</form>
 				</section>
 		</main>
-		<script src="js/principal.js"></script>
+		<script src="js/calcula-imc.js"></script>
 		<script src="js/form.js"></script>
+		<script src="js/remover-cliente.js"></script>
+		<script src="js/filtro.js"></script>
+		<script src="js/buscar-paciente.js"></script>
 
 	</body>
 </html>
